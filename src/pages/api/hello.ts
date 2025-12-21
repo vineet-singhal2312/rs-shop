@@ -1,0 +1,12 @@
+import { NextApiRequest, NextApiResponse } from 'next'
+import { supabase } from '@/lib/supabase'
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+    const { data: manufacturers, error } = await supabase.from('manufacturers').select('count').single()
+
+    if (error) {
+        return res.status(500).json({ status: 'Error connecting to Supabase', error: error.message })
+    }
+
+    res.status(200).json({ status: 'Supabase Connected', manufacturerCount: manufacturers })
+}

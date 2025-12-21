@@ -1,0 +1,64 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.card {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cardTitle {
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+    color: var(--primary-color);
+}
+
+.cardDescription {
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
+
+.cardAction {
+    align-self: flex-start;
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 3rem 1rem;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.heroTitle {
+    margin: 0;
+    font-size: 2.5rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.heroSubtitle {
+    color: #666;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
