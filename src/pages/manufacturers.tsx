@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { authFetch } from '@/lib/authFetch'
 import Layout from '@/components/Layout'
 import Modal from '@/components/Modal'
 import styles from './rates.module.css' // Reusing rates styles for consistency
@@ -50,7 +51,7 @@ export default function Manufacturers() {
     const fetchManufacturers = async () => {
         try {
             setLoading(true)
-            const res = await fetch('/api/manufacturers')
+            const res = await authFetch('/api/manufacturers')
             if (res.ok) setManufacturers(await res.json())
         } catch (error) {
             console.error('Failed to fetch manufacturers', error)
@@ -89,7 +90,7 @@ export default function Manufacturers() {
     const handleDelete = async (id: string) => {
         if (!confirm('Are you sure you want to delete this manufacturer?')) return
         try {
-            const res = await fetch(`/api/manufacturers/${id}`, { method: 'DELETE' })
+            const res = await authFetch(`/api/manufacturers/${id}`, { method: 'DELETE' })
             if (res.ok) fetchManufacturers()
         } catch (error) {
             console.error('Failed to delete manufacturer', error)
@@ -105,7 +106,7 @@ export default function Manufacturers() {
 
             const method = editingManufacturer ? 'PUT' : 'POST'
 
-            const res = await fetch(url, {
+            const res = await authFetch(url, {
                 method,
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
